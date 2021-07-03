@@ -16,11 +16,12 @@ class StateMachine(object):
         self.handlers = collections.OrderedDict()
         self.delay_pool = collections.OrderedDict()
         self.delay_start_state = collections.OrderedDict()
-        self.wait_count = 0
         self.in_seq = collections.OrderedDict()
-        self.PID = 0
         self.work_pool = collections.OrderedDict()
         self.res_pool = collections.OrderedDict()
+        self.channel = collections.OrderedDict()
+        self.wait_count = 0
+        self.PID = 0
         self.cycle = 1
         self.T = T
         # signal of End
@@ -33,7 +34,7 @@ class StateMachine(object):
         self.queue_temp = []
         self.queue_init = []
         self.current = -1
-        self.channel = collections.OrderedDict()
+
 
     def after_delay(self, delay_cycle: int) -> Any:
         """
@@ -85,15 +86,6 @@ class StateMachine(object):
 
             return wrapper
 
-        return decorator
-
-    def IO_en(self, IO: bool) -> Any:
-        def decorator(fun: Callable[[str, str], Any]) -> Any:
-            @wraps(fun)
-            def wrapfun(a: str, b: str) -> None:
-                self.IO_enable = IO
-                fun(a, b)
-            return wrapfun
         return decorator
 
     def task_transition(self, PID_: int):
