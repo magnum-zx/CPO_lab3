@@ -33,36 +33,7 @@ class StateMachineTest(unittest.TestCase):
         fsm.run()
         self.assertEqual(fsm.log[6][0][0], "Running")
         self.assertEqual(fsm.log[6][0][1], 0)
-
-
-    def test_IO(self):
-        fsm = StateMachine(1, 10)
-
-        @fsm.IO_en(True)
-        @fsm.seq_sup(["0"])
-        def task(inp, out):
-            if not inp:
-                return "0", False
-            elif inp == "0":
-                if out == '0':
-                    return "0", False
-                elif out == "1":
-                    return "1", True
-            return inp, False
-        task("0", "0")
-
-        def stub_stdin(test, inputs):
-            stdin = sys.stdin
-
-            def cleanup():
-                sys.stdin = stdin
-            test.addCleanup(cleanup)
-            sys.stdin = io.StringIO(inputs)
-
-        stub_stdin(self, '0\n0 0 0 1\n\n\n\n\n\n\n\n\n\n\n\n\n')
-        fsm.run()
-        self.assertEqual(fsm.log[1][0][0], "Running")
-        self.assertEqual(fsm.log[1][0][1], 0)
+        
 
     def test_parallel(self):
         fsm = StateMachine(1, 10)
