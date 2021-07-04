@@ -3,8 +3,12 @@ Implement of Computational Process Management For CPO_lab4
 
 Group Name:224yyds
 
-Group Member:Jiawei_Yan and Zhengxuan_Wu
+Group Member:
+name ：Jiawei_Yan 
+ID：202320061 
 
+name：Zhengxuan_Wu
+ID:202320062
 Laboratory Work Number: 3
 
 Variant Number: 5
