@@ -33,7 +33,7 @@ class StateMachineTest(unittest.TestCase):
         fsm.run()
         self.assertEqual(fsm.log[6][0][0], "Running")
         self.assertEqual(fsm.log[6][0][1], 0)
-        
+
 
     def test_parallel(self):
         fsm = StateMachine(1, 10)

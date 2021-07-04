@@ -16,18 +16,16 @@ class StateMachine(object):
         self.handlers = collections.OrderedDict()
         self.delay_pool = collections.OrderedDict()
         self.delay_start_state = collections.OrderedDict()
+        self.channel = collections.OrderedDict()
         self.in_seq = collections.OrderedDict()
         self.work_pool = collections.OrderedDict()
         self.res_pool = collections.OrderedDict()
-        self.channel = collections.OrderedDict()
         self.wait_count = 0
         self.PID = 0
         self.cycle = 1
         self.T = T
         # signal of End
         self.HALT = HALT
-        # IO switch
-        self.IO_enable = False
         # log the process
         self.log = {}
         self.queue = []
